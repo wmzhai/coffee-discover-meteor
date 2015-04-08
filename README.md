@@ -1,1 +1,1 @@
-# coffee-discover-meteor
+# Discover Meteor with CoffeeScript
