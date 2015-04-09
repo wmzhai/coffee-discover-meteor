@@ -6,10 +6,11 @@ Template.postSubmit.events
       url: $(e.target).find('[name=url]').val()
       title: $(e.target).find('[name=title]').val()
 
-    post._id = Posts.insert(post)
 
-    #console.log post._id
+    Meteor.call 'postInsert', post, (error, result) ->
+      if error
+        return alert error.reason
 
-    Router.go 'postPage', post
+      Router.go 'postPage',  _id : result._id
 
 
