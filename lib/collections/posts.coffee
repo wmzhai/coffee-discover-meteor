@@ -25,3 +25,12 @@ Meteor.methods
     postId = Posts.insert postAttribute
 
     _id : postId
+
+
+@validatePost = (post) ->
+  errors = {}
+  if !post.title
+    errors.title = "请填写标题"
+  if !post.url
+    errors.url = "请填写URL"
+  return errors
