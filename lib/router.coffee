@@ -12,6 +12,9 @@ Router.route '/posts/:_id',
   name : 'postPage'
   data : -> return Posts.findOne(@params._id)
 
+Router.route '/posts/:_id/edit', {name : 'postEdit', data : -> Posts.findOne(@params._id)}
+
+
 Router.route '/submit', name : 'postSubmit'
 
 
