@@ -10,8 +10,18 @@ Router.route '/', name:'postsList'
 
 Router.route '/posts/:_id',
   name : 'postPage'
-  data : -> return Posts.findOne(this.params._id)
+  data : -> return Posts.findOne(@params._id)
 
 Router.route '/submit', name : 'postSubmit'
 
+
+requireLogin = ->
+  if !Meteor.user()
+    @render 'accessDenied'
+  else
+    @next()
+
+
 Router.onBeforeAction 'dataNotFound', only : 'postPage'
+
+Router.onBeforeAction requireLogin, only : 'postSubmit'
