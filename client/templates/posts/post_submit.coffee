@@ -9,7 +9,7 @@ Template.postSubmit.events
     post._id = Posts.insert(post)
 
     #console.log post._id
-    
+
     Router.go 'postPage', post
 
 
