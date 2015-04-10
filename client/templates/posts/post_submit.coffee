@@ -22,10 +22,9 @@ Template.postSubmit.events
     if (errors.title || errors.url)
       return Session.set('postSubmitErrors', errors)
 
-
     Meteor.call 'postInsert', post, (error, result) ->
       if error
-        return throwError error.reason
+        Errors.throw error.reason
 
       if result.postExists
         throwError 'This link has already been posted'
